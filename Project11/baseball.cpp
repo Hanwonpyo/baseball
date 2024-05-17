@@ -20,7 +20,37 @@ public:
 		assertIllegalArgument(guessNumber);
 		if(guessNumber == question)
 			return {true,3,0 };
-		return { false, 0, 0 };
+	
+		return { false, countingStirke(guessNumber),countingBall(guessNumber)};
+	}
+	int countingBall(const string& guessNumber)
+	{
+		int count = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				if (i == j) continue;
+				if (guessNumber[i] == question[j])
+				{
+					count++;
+				}
+			}
+	
+		}
+		return count;
+	}
+	int countingStirke(const string& guessNumber)
+	{
+		int count = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			if (guessNumber[i] == question[i])
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 	bool isDuplicatedNumber(const string& guessNumber)
 	{
@@ -37,7 +67,7 @@ public:
 
 		for (char ch : guessNumber)
 		{
-			if (ch > '0' && ch <'9') continue;
+			if (ch >= '0' && ch <='9') continue;
 			throw invalid_argument("Must be number");
 		}
 		if (isDuplicatedNumber(guessNumber))
