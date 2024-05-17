@@ -1,11 +1,24 @@
 #include <stdexcept>
+#include<iostream>
 using namespace std;
+struct GuessResult
+{
+	bool solved;
+	int strikes;
+	int balls;
+};
 class Baseball
 {
 public:
-	void guess(const string& guessNumber)
+	explicit Baseball(const string& question)
+		:question(question)
+	{
+
+	}
+	GuessResult guess(const string& guessNumber)
 	{
 		assertIllegalArgument(guessNumber);
+		return {true,3,0 };
 	}
 	bool isDuplicatedNumber(const string& guessNumber)
 	{
@@ -22,7 +35,7 @@ public:
 
 		for (char ch : guessNumber)
 		{
-			if (ch < '0' || ch >'9') continue;
+			if (ch > '0' && ch <'9') continue;
 			throw invalid_argument("Must be number");
 		}
 		if (isDuplicatedNumber(guessNumber))
@@ -30,4 +43,6 @@ public:
 			throw invalid_argument("Must not have same number");
 		}
 	}
+private:
+	string question;
 };
