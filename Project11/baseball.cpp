@@ -5,6 +5,7 @@ class Baseball
 public:
     void guess(const string& string)
     {
+        if(string.length() !=3)
         throw length_error("Must bethree letters.");
       }
 };
