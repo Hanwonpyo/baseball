@@ -20,7 +20,6 @@ public:
 		assertIllegalArgument(guessNumber);
 		if(guessNumber == question)
 			return {true,3,0 };
-	
 		return { false, countingStirke(guessNumber),countingBall(guessNumber)};
 	}
 	int countingBall(const string& guessNumber)
@@ -34,6 +33,7 @@ public:
 				if (guessNumber[i] == question[j])
 				{
 					count++;
+					break;
 				}
 			}
 	

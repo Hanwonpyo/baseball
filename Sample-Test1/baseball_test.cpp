@@ -30,18 +30,17 @@ TEST_F(BaseballFixture, ReturnSolvedResult)
 	EXPECT_EQ(3,result.strikes);
 	EXPECT_EQ(0, result.balls);
 }
-TEST_F(BaseballFixture, CountingStrikes)
+TEST_F(BaseballFixture, 2Strikes0BallCase)
 {
 	GuessResult result = game.guess("129");
 	EXPECT_FALSE(result.solved);
 	EXPECT_EQ(2, result.strikes);
 	EXPECT_EQ(0, result.balls);
 }
-TEST_F(BaseballFixture, CountingBalls)
+TEST_F(BaseballFixture, 1Strikes2BallCase)
 {
 	GuessResult result = game.guess("132");
 	EXPECT_FALSE(result.solved);
 	EXPECT_EQ(1, result.strikes);
 	EXPECT_EQ(2, result.balls);
 }
-
